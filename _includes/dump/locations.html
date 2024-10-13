@@ -1,0 +1,21 @@
+<h2>Locations</h2>
+{%- assign locations = site.locations -%}
+{%- for item in locations -%}
+    <h3> {{ item.title }} </h3>
+    <h4>Core Details</h4>
+    <ul>
+        {%- assign item_parent = site.documents | where: "path", item.parent | first -%}
+        {% if item_parent %}
+        {%- assign item_grand_parent = site.documents | where: "path", item_parent.parent | first -%}
+        <li><b>Located Within:</b> {% if item_grand_parent %}{{item_grand_parent.title }} - {% endif %}{{item_parent.title}}</li>
+        {% endif %}
+        {% if item.details.type %}
+            <li><b>Location Type:</b> {{item.details.type}}</li>
+        {% endif %}
+        {% if item.excerpt %}
+            <li>{{item.excerpt }}</li>
+        {% endif %}        
+    </ul>
+    <h4>Overview</h4>
+    {{ item.content }}
+{%- endfor -%}

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="{{ site.lang | default: " en-US" }}">
+{%- include head.html -%}
+
+
+<body class="bg-{{ page.theme | default: 'brand' }}-background {{ page.layout }}">
+  
+  {%- include header.html -%}
+  <div class="container mx-auto">
+    {{ content }}
+  </div>
+  {%- include footer.html -%}
+</body>
+
+</html>

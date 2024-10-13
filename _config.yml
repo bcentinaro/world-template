@@ -1,0 +1,74 @@
+url: "https://world.com" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "" # the subpath of your site, e.g. /blog
+title: "World Template"
+subtitle: "A Static World Builder Template" # The Subtitle
+
+
+markdown: kramdown
+
+kramdown:
+  auto_ids: true
+  entity_output: as_char
+  toc_levels: [1, 2, 3, 4, 5, 6]
+  smart_quotes: lsquo,rsquo,ldquo,rdquo
+  input: GFM
+  hard_wrap: false
+  footnote_nr: 1
+  show_warnings: false
+
+pagination:
+  enabled: true
+  per_page: 25
+  permalink: '/:num/'
+
+collections:
+  characters:
+    output: true
+    sort_by: title
+    link: true
+  nations: 
+    output: true
+    sort_by: title
+    link: true
+  dieties:
+    output: true
+    sort_by: title
+    link: true
+  locations: 
+    output: true
+    sort_by: title
+  organizations: 
+    output: true
+    sort_by: title
+  stories: 
+    output: true
+    sort_by: title
+    link: true
+  chapters: 
+    output: true
+    sort_by: story
+
+  species: 
+    output: true
+    sort_by: title
+    link: true
+
+
+last-modified-at:
+    date-format: "%b %-d, %Y"
+
+plugins:
+  - jekyll-sitemap
+
+exclude:
+  - .sass-cache/
+  - .jekyll-cache/
+  - gemfiles/
+  - Gemfile
+  - Gemfile.lock
+  - node_modules/
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - style.html

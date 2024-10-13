@@ -1,0 +1,15 @@
+{%- assign items = site.stories -%}
+{%- if items != [] -%}
+    <h2>Stories</h2>
+    {%- for item in items -%}
+        <h3>{{ item.title }}</h3>
+        <h4>Overview</h4>
+        {{ item.content }}
+        <h4>Chapters</h4>
+        {%- assign chapters = site.chapters | where: "story", item.id -%}
+        {%- for chapter in chapters -%}
+            <h5>{{item.title}}</h5>
+            {{item.content}}
+        {%- endfor -%}
+    {%- endfor -%}
+{%- endif -%}

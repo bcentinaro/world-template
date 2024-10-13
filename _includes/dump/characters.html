@@ -1,0 +1,87 @@
+<h2>Characters</h2>
+{%- assign characters = site.characters | where: "published", true -%}
+{%- for item in characters -%}
+    <h3> {{ item.title }} </h2>
+    <h4>Core Details</h3>
+    <ul>
+        {% if item.species %}
+            {% assign species = site.species | where: "path", item.species | first %}
+            <li><b>Species:</b> {{ species.title }}</li>
+        {% endif %}
+        {% if item.details.core.religion %}
+            {% assign religion = site.dieties | where: "path", item.details.core.religion | first %}
+            <li><b>Primary Religion:</b>{{ religion.title }}</li>
+        {% endif %}
+        {% if item.details.core.occupation %}
+            <li><b>Occupation:</b> {{item.details.core.occupation}}</li>
+        {% endif %}
+        
+    </ul>
+    {% if item.details.relationships %}
+        <h4>Relationships</h4>
+        {%- for item in item.details.relationships -%}
+            {% include dump/connection.html item=item reverse=true%}
+        {%- endfor -%}
+    {% endif %}
+    {% if item.details.connections %}
+        <h4>Connections</h4>
+        {%- for item in item.details.connections -%}
+            {% include dump/connection.html item=item reverse=false%}
+        {%- endfor -%}
+    {% endif %}
+    <h4>Bio</h4>
+    {{ item.content }}
+    <h4>Apperance</h4>
+    <ul>
+    {% if item.details.appearance.hair %}
+        <li><b>Hair Color:</b> {{item.details.appearance.hair}}</li>
+    {% endif %}
+    {% if item.details.appearance.eye %}
+        <li><b>Eye Color:</b> {{item.details.appearance.eye}}</li>
+    {% endif %}
+    {% if item.details.appearance.build %}
+    <li><b>Build:</b> {{item.details.appearance.build}}</li>
+    {% endif %}
+    </ul>
+    {{item.details.appearance.overview}}
+    <h4>Personality</h4>
+    <ul>
+        {% if item.details.personality.flaw %}
+            <li><b>Greatest Flaw:</b> {{item.details.personality.flaw}}</li>
+        {% endif %}
+        {% if item.details.personality.strength %}
+            <li><b>Greatest Strength:</b> {{item.details.personality.strength}}</li>
+        {% endif %}
+        {% if item.details.personality.fear %}
+            <li><b>Greatest Fear:</b> {{item.details.personality.fear}}</li>
+        {% endif %}
+    </ul>
+    {% if item.details.personality.ideal %}
+        <h5>Ideal Life</h5> 
+        {{item.details.personality.ideal}}
+    {% endif %}
+    {% if item.details.personality.power %}
+        <h5>Thoughts on Power</h5> 
+        {{item.details.personality.power}}
+    {% endif %}
+    {% if item.details.personality.ambition %}
+        <h5>Thoughts on Ambition</h5> 
+        {{item.details.personality.ambition}}
+    {% endif %}
+    {% if item.details.personality.love %}
+        <h5>Thoughts on love</h5> 
+        {{item.details.personality.love}}
+    {% endif %}
+    {% if item.details.personality.change %}
+        <h5>Thoughts on Change</h5> 
+        {{item.details.personality.change}}
+    {% endif %}
+    {% if item.details.personality.motiviation %}
+        <h5>Primary Motiviation</h5> 
+        {{item.details.personality.motiviation}}
+    {% endif %}
+    {% if item.details.personality.conflict %}
+        <h5>Primary Confilct</h5> 
+        {{item.details.personality.conflict}}
+    {% endif %}
+{%- endfor -%}

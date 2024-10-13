@@ -1,0 +1,43 @@
+---
+layout: default
+---
+<div class="my-5">
+    <div class="p-3 rounded-lg bg-white">
+        <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
+        <div class="content">{{ content }}</div>
+
+        <div class="py-10 grid grid-cols-4">
+            {% for post in paginator.posts %}
+            <div class="mx-auto">
+                <a href="{{ post.url }}" class="block">
+                <div class="p-4">
+        
+                    <img src="{{ post.details.images.thumbnail }}" alt="{{ post.title }}" class="pb-5 max-w-full">
+                    <p class="text-center text-gray-700">{{ post.excerpt }}</p>
+                    <span class="text-end text-sm">Last Updated: {{ post.last_modified_at | date: "%b %-d, %Y" }}</span>
+                    
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+
+        {% if paginator.total_pages > 1 %}
+        <div id="pagination">
+            <ul>
+                {% if paginator.previous_page %}
+                <li>
+                    <a href="{{ paginator.previous_page_path }}">Newer</a>
+                </li>
+                {% endif %}
+                {% if paginator.next_page %}
+                <li>
+                    <a href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        {% endif %}
+        
+    </div>
+</div>

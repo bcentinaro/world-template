@@ -1,0 +1,7 @@
+{%- for item in include.items -%}
+    {% include list-item.html item=item %}
+{%- endfor -%}
+{%- for reference in include.references -%}
+    {%- assign item = site.documents | where: "path", reference.id | first -%}
+    {% include list-item.html item=item  caption=reference.caption %}
+{%- endfor -%}

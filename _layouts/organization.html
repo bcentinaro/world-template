@@ -1,0 +1,23 @@
+---
+layout: default
+---
+<div class="my-5">
+    <div class="p-3 rounded-lg bg-white">
+        <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
+        <div class="">
+
+            <div class="content">
+                {% if page.details.images.image  %}
+                    {% include image.html url=page.details.images.image caption=page.title image_class="rounded-lg float-right ml-3 max-h-96 max-w-[50%]" %}                    
+                {% endif %}
+                {{ content }}
+
+                {% assign characters = site.characters | where: "species", page.path  %}
+                {% include list-small.html items=characters %}
+            </div>
+
+        </div>
+    </div>
+</div>
+
+

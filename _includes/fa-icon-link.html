@@ -1,0 +1,22 @@
+{% case include.tag %}
+    {% when 'h2' %}
+        <a href="{{ include.url }}" class="block">
+            <div class="p-4">
+                <h2 class="text-xl font-bold mb-2">
+                        <img src="/assets/svgs/{{ include.style | default: 'regular' }}/{{ include.icon }}.svg" alt="{{ include.caption | default: incude.icon }}" class="max-h-7 max-w-7" style="display: inline;"/>
+                        {{ include.title }}  
+                </h2>
+            </div>
+        </a>
+    {% when 'img' %}
+    <a href="{{ include.url }}">
+        <img src="/assets/svgs/{{ include.style | default: 'regular' }}/{{ include.icon }}.svg" alt="{{ include.caption | default: incude.icon }}" class="h-4" style="display: inline;"/>
+    </a>
+
+    {% else %}
+        <a href="{{ include.url }}">
+            <img src="/assets/svgs/{{ include.style | default: 'regular' }}/{{ include.icon }}.svg" alt="{{ include.caption | default: incude.icon }}" class="max-h-5" style="display: inline;"/>
+            {{ include.title }}
+        </a>
+        
+{% endcase %}

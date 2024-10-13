@@ -1,0 +1,59 @@
+---
+layout: default
+---
+
+<script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "{{ page.title }}",
+      "sameAs": "{{ site.url }}{{page.url}}",
+      "description": "{{ page.description | default: page.excerpt | default: site.description }}",
+      "image":  "{{ site.url }}{{ page.details.images.thumbnail | default: page.image | default: site.logo | default: '/assets/image/logo.png' }}"
+      
+    }
+</script>
+<div class="my-5">
+    <div class="p-3 rounded-lg bg-white">
+        <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
+        <div class="pt-3 min-h-[26rem] grid grid-cols-4">
+            <div class="col-span-3">
+                <div class="content">{{ content }}</div>
+            </div>
+            <div class="p-3">
+                {% if page.details.images.image  %}
+                    {% include image.html url=page.details.images.image caption=page.title class="rounded-lg max-w-full" %}               
+                {% endif %}
+                <h2 class="text-xl font-bold">Core Details</h2>
+                <ul>
+                    {% if page.species %}
+                        {% assign species = site.species | where: "path", page.species | first %}
+                        <li><span class="font-bold">Species:</span> <a class="underline" href="{{ species.url }}">{{ species.title }}</a></li>
+                    {% endif %}
+                    {% if page.details.appearance.hair %}
+                        <li><span class="font-bold">Hair Color:</span> {{page.details.appearance.hair}}</li>
+                    {% endif %}
+                    {% if page.details.appearance.eye %}
+                        <li><span class="font-bold">Eye Color:</span> {{page.details.appearance.eye}}</li>
+                    {% endif %}
+                    {% if page.details.core.religion %}
+                        {% assign religion = site.dieties | where: "path", page.details.core.religion | first %}
+                        <li><span class="font-bold">Primary Religion:</span> <a class="underline" href="{{ religion.url }}">{{ religion.title }}</a></li>
+                    {% endif %}
+                    {% if page.details.core.occupation %}
+                        <li><span class="font-bold">Occupation:</span> {{page.details.core.occupation}}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+        {% if page.details.relationships %}
+            <h2 class="text-xl font-bold">Relationships</h2>
+            {% include list-small.html references=page.details.relationships %}
+        {% endif %}
+
+        {% if page.details.connections %}
+            <h2 class="text-xl font-bold">Connections</h2>
+            {%- include list-small.html references=page.details.connections -%}
+        {% endif %}
+    </div>
+</div>

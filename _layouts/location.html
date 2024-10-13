@@ -1,0 +1,48 @@
+---
+layout: default
+---
+
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Place",
+        "name": "{{ page.title }}",
+        "sameAs": "{{ site.url }}{{page.url}}",
+        "description": "{{ page.description | default: page.excerpt | default: site.description }}",
+        "image":  "{{ site.url }}{{ page.details.images.thumbnail | default: page.image | default: site.logo | default: '/assets/image/logo.png' }}"
+      }
+</script>
+
+<div class="my-5">
+    <div class="p-3 rounded-lg bg-white">
+        <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
+        {% if page.parent %}
+            {% assign parent = site.locations | where: "path", page.parent | first %}
+                {%- include fa-icon-link.html tag="h2" style="duotone" icon="left" url=parent.url title=parent.title-%}
+            {% else %}
+        {% endif %}
+        <div class="">
+
+            <div class="content">
+                {% if page.details.images.image  %}
+                <div class="float-right">
+                    {% include image.html url=page.details.images.image caption=page.title image_class="rounded-lg ml-3 max-h-96" %}                    
+                </div>
+                {% endif %}
+                {{ content }}
+
+            </div>
+            <div id="sub-locations">
+                {% assign pages = site.locations | where: "parent", page.path %}
+
+                {% include list.html items=pages %}
+            </div>
+            {% if page.details.connections %}
+            <h2 class="text-xl font-bold">Connections</h2>              
+            {%- include list.html references=page.details.connections -%}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+

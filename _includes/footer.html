@@ -1,0 +1,12 @@
+<footer class="bg-{{page.theme | default: 'brand'}} text-gray-400">
+    <div class="max-w-4xl mx-auto py-8 px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center">
+      <p class="text-sm">&copy; 2023 {{site.title}}</p>
+      <ul class="flex space-x-4 mt-4 sm:mt-0">
+        <li><a href="#" class="hover:text-white">Privacy Policy</a></li>
+        <li><a href="#" class="hover:text-white">Terms of Service</a></li>
+        {% if site.twitter %}<li>{%- include fa-icon-link.html tag="img" style="brands" icon="x-twitter" url="https://twitter.com/{{site.twitter}}" title="" -%}</li>{% endif %}
+        {% if site.facebook_url %}<li>{%- include fa-icon-link.html tag="img" style="brands" icon="facebook" url="{{ site.facebook_url}}" title="" -%}</li>{% endif %}
+        {% if site.mastodon %}<li>{%- include fa-icon-link.html tag="img" style="brands" icon="mastodon" url="https://mastodon.social/{{site.mastodon}}" title="" -%}</li>{% endif %}
+      </ul>
+    </div>
+  </footer>

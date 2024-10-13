@@ -1,0 +1,15 @@
+{%- include menu.html -%}
+{% if page.header %}
+  {% assign header = page.header %}
+{% else %}
+  {% assign header = page.theme | default: "default" | append: ".jpg" | prepend: "/assets/header/" %}
+{% endif %}
+<div class="container mx-auto">
+<div class="relative bg-{{page.theme | default: 'brand'}}-primary rounded-b-lg">
+    <img src="{{ header }}" alt="Hero Image" class="absolute inset-0 w-full h-full object-cover opacity-75 rounded-b-lg">
+    <div class="relative z-10 max-w-4xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
+      <h1 class="text-4xl font-bold text-{{page.theme | default: 'brand'}}-secondary leading-tight mb-4">{{ site.title }}</h1>
+      <p class="text-xl text-{{page.theme | default: 'brand'}}-secondary mb-8">{{ site.subtitle }}</p>
+    </div>
+  </div>
+</div>

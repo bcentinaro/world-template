@@ -1,0 +1,7 @@
+{%- assign current_item = site.documents | where: "path", include.item.id | first -%}
+
+{% if include.reverse %}
+    <li><b>{{ include.caption | default: include.item.caption | default: include.item.excerpt }}:</b> {{current_item.title}}</li>
+{% else %}
+    <li><b>{{current_item.title}}:</b> {{ include.caption | default: include.item.caption | default: include.item.excerpt }}</li>
+{% endif %}

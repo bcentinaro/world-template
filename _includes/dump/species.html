@@ -1,0 +1,9 @@
+{%- assign items = site.species -%}
+{%- if items != [] -%}
+    <h2>Species</h2>
+    {%- for item in items -%}
+        <h3> {{ item.title }} </h3>
+        <h4>Overview</h4>
+        {{ item.content }}
+    {%- endfor -%}
+{%- endif -%}

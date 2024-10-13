@@ -1,0 +1,7 @@
+<picture class="{{ include.class }}">
+    {% if jekyll.environment == "production" %}
+    <source type="image/webp" srcset="{{ include.url }}.webp" loading="lazy" class="{{ include.image_class}}" />
+    {% endif %}
+    <img src="{{ include.url }}" alt="{{ include.caption }}" loading="lazy" class="{{ include.image_class}}" />
+</picture>
+<p class="text-center text-brand">{{ include.caption }}</p>
