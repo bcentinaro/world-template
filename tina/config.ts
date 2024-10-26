@@ -509,7 +509,7 @@ export default defineConfig({
             // Example of using a custom slugify function
             slugify: (values) => {
               if (values?.story) {
-                return `/${values?.story.split("/").pop().split(".")[0]}/${(values?.title || "")
+                return `/chapter-${("00" + (values?.chapter || 1)).slice(-3)}-${values?.story.split("/").pop().split(".")[0]}/${(values?.title || "")
                 }`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
               }
               else{
