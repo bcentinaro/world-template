@@ -84,4 +84,16 @@
         <h5>Primary Confilct</h5> 
         {{item.details.personality.conflict}}
     {% endif %}
+    <h4>Ability</h4>
+    {% if item.details.ability.notable_skills %}
+        <h5>Notable Skills</h5> 
+        <ul>
+            {%- for skill in item.details.ability.notable_skills -%}<li>{{skill}}</li>{%- endfor -%}
+        </ul>
+    {% endif %}
+    {% if item.details.ability.weapon %}
+    <h5>Fightning Style</h5>
+    <p><b>Weapon: {{item.details.ability.weapon}}</b></p>
+    <p>{{ item.details.ability.fighting_style | newline_to_br }}</p>
+    {%- endif -%}
 {%- endfor -%}

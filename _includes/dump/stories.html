@@ -6,10 +6,17 @@
         <h4>Overview</h4>
         {{ item.content }}
         <h4>Chapters</h4>
-        {%- assign chapters = site.chapters | where: "story", item.id -%}
+        {%- assign chapters = site.chapters | where: "story", item.path -%}
         {%- for chapter in chapters -%}
-            <h5>{{item.title}}</h5>
-            {{item.content}}
+            <h5>{{chapter.title}}</h5>
+            <h6>Characters</h6>
+            <ul>
+            {%- for chapter_character in chapter.details.characters -%}
+                {%- assign character = site.characters | where: "path", chapter_character.id | first -%}
+                <li><b>{{character.title}}:</b> {{chapter_character.description | newline_to_br }}</li>
+            {%- endfor -%}
+            </ul>
+            {{chapter.content}}
         {%- endfor -%}
     {%- endfor -%}
 {%- endif -%}

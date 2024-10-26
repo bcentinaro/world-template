@@ -1,7 +1,8 @@
+{%- assign image = include.url | default: "/assets/logo.png" -%}
 <picture class="{{ include.class }}">
     {% if jekyll.environment == "production" %}
-    <source type="image/webp" srcset="{{ include.url }}.webp" loading="lazy" class="{{ include.image_class}}" />
+    <source type="image/webp" srcset="{{ image }}.webp" loading="lazy" class="{{ include.image_class}}" />
     {% endif %}
-    <img src="{{ include.url }}" alt="{{ include.caption }}" loading="lazy" class="{{ include.image_class}}" />
+    <img src="{{ image }}" alt="{{ include.caption }}" loading="lazy" class="{{ include.image_class}}" />
 </picture>
 <p class="text-center text-brand">{{ include.caption }}</p>

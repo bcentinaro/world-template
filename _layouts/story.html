@@ -4,26 +4,29 @@ layout: default
 <div class="my-5">
     <div class="p-3 rounded-lg bg-white">
         <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
-                {%- if page.location -%}
-                    {%- assign item = site.locations | where: "path", page.location | first -%}
-                    <div class="float-right">
-                        {%- assign caption=item.title | prepend: "Story Location: " -%}
-                        {% include image.html url=item.details.images.image caption=caption image_class="rounded-lg ml-3 max-h-96" %}                    
-                    </div>
+                {%- if page.details.locations -%}
+                    <h2 class="text-xl font-bold text-brand">Locations</h2>
+                    {% include list-small.html  references=page.details.locations %}
                 {%- endif -%}
-                <div class="content">{{ content }}</div>
-            <div id="featuring">
-                <h2 class="text-xl font-bold">Featuring</h2>
-                <div class="py-10 grid 2xl:grid-cols-8 xl:grid-cols-8 lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 ">
-                    {%- for item in site.characters -%}
-                        {%- assign featured = item.featured -%}
-                        {%- assign featured = featured | where: "chapter", page.path | size-%}
-                        {%- if featured == 1 -%}
-                            {% include list-item.html item=item %}
-                        {%- endif -%}
+                {%- if page.details.characters -%}
+                    <h2 class="text-xl font-bold text-brand">Characters</h2>
+                    {% include list-small.html  references=page.details.characters %}
+                    <ul>
+                    {%- for chapter_character in page.details.characters -%}
+                    {%- assign character = site.characters | where: "path", chapter_character.id | first -%}
+                    <li><b>{{character.title}}:</b> {{chapter_character.description | newline_to_br }}</li> 
                     {%- endfor -%}
-                </div>
-                
+                    </ul>
+                {%- endif -%}
+
+                <div class="content">{{ content }}</div>
+            <div id="chapters">
+                {%- assign chapters = site.chapters | where: "story", page.path -%}
+                <ul>
+                    {%- for chapter in chapters -%}
+                        <li><a href="{{chapter.id}}.html">{{chapter.title}}</a></li>
+                    {%- endfor -%}
+                </ul>                
             </div>
         </div>
     </div>
