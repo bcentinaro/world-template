@@ -406,7 +406,7 @@ export default defineConfig({
         defaultItem: () => {
           return {
             layout: "story",
-            theme: "default"
+            theme: "default", 
 
           }
         },
@@ -469,6 +469,11 @@ export default defineConfig({
             type: "boolean",
             name: "published",
             label: "Published"
+          },
+          {
+            type: "boolean",
+            name: "public",
+            label: "public"
           },
           {type: "object", name: "details", label: "Details", fields: [
             {type: "object", name: "characters", label: "Main Characters", list: true,
