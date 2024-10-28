@@ -1,19 +1,24 @@
 {%- assign items = site.stories -%}
 {%- if items != [] -%}
-    <h2>Stories</h2>
     {%- for item in items -%}
-        <h3>{{ item.title }}</h3>
-        <h4>Overview</h4>
+        <h2>Story: {{ item.title }}</h2>
+        <h3>Overview</h3>
         {{ item.content }}
-        <h4>Chapters</h4>
         {%- assign chapters = site.chapters | where: "story", item.path -%}
         {%- for chapter in chapters -%}
-            <h5>{{chapter.title}}</h5>
-            <h6>Characters</h6>
+            <h3>Chapter {{chapter.chapter_number}}: {{chapter.title}}</h3>
+            <h4>Characters</h4>
             <ul>
             {%- for chapter_character in chapter.details.characters -%}
                 {%- assign character = site.characters | where: "path", chapter_character.id | first -%}
                 <li><b>{{character.title}}:</b> {{chapter_character.description | newline_to_br }}</li>
+            {%- endfor -%}
+            </ul>
+            <h4>Locations</h4>
+            <ul>
+            {%- for chapter_location in chapter.details.locations -%}
+                {%- assign location = site.locations | where: "path", chapter_location.id | first -%}
+                <li><b>{{location.title}}:</b> {{chapter_location.description | newline_to_br }}</li>
             {%- endfor -%}
             </ul>
             {{chapter.content}}

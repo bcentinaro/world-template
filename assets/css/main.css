@@ -5,22 +5,26 @@
 @tailwind components;
 @tailwind utilities;
 
-.content p {
-  margin-bottom: 1.5rem;
-}
+.content { 
+  p { 
+    @apply font-normal text-base pb-5; 
+  }
 
-.content a {
-    text-decoration: underline;
-}
+  a {
+    @apply underline;
+  }
 
-.content h1 {
-  font-size: 2.5rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
-}
+  h1 { @apply font-bold text-4xl pb-5; }
 
-.content h2 {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 1.5rem;
+  h2 { @apply font-bold text-3xl pb-5; }
+
+  h3 { @apply font-bold text-2xl pb-5; }
+
+  h4 { @apply font-bold text-xl pb-5; }
+
+  h5 { @apply font-bold text-l pb-5; }
+
+  h6 { @apply font-bold text-l pb-5; }
+
+  h7 { @apply font-bold text-l pb-5; }
 }
