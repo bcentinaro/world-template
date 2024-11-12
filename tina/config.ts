@@ -49,7 +49,7 @@ export default defineConfig({
             slugify: (values) => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
         
-                return `${(values?.title || "")}`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+                return `${(values?.title || "")}`.replace(/[^W+]/g, '-').toLowerCase();
               
             },
           },
@@ -213,7 +213,7 @@ export default defineConfig({
             slugify: (values) => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
         
-                return `${(values?.title || "")}`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+                return `${(values?.title || "")}`.replace(/[^W+]/g, '-').toLowerCase();
               
             },
           },
@@ -306,7 +306,7 @@ export default defineConfig({
                 return `${(values?.parent || "")
                 .replace('.md', '')
                 .replace('_locations/', '/')}/${(values?.title || "")
-              }`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+              }`.replace(/[^W+]/g, '-').toLowerCase();
               
             },
           },
@@ -416,8 +416,7 @@ export default defineConfig({
             // Example of using a custom slugify function
             slugify: (values) => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
-              return `${(values?.story || "")}/${(values?.title || "")}`
-              .replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+              return `${(values?.story || "")}/${(values?.title || "")}`.replace(/[^W+]/g, '-').toLowerCase();
             },
           },
         },
@@ -510,10 +509,10 @@ export default defineConfig({
             slugify: (values) => {
               if (values?.story) {
                 return `/chapter-${("00" + (values?.chapter || 1)).slice(-3)}-${values?.story.split("/").pop().split(".")[0]}/${(values?.title || "")
-                }`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+                }`.replace(/[^W+]/g, '-').toLowerCase();
               }
               else{
-                return `/short-stories/${(values?.title || "")}`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+                return `/short-stories/${(values?.title || "")}`.replace(/[^W+]/g, '-').toLowerCase();
               }
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
 
@@ -646,7 +645,7 @@ export default defineConfig({
 
                 return `${(values?.location || "")
                 .replace('.md', '')
-                .replace('_locations/', '/')}/${(values?.title || "")}`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+                .replace('_locations/', '/')}/${(values?.title || "")}`.replace(/[^W+]/g, '-').toLowerCase();
               
             },
           },
@@ -730,7 +729,7 @@ export default defineConfig({
             slugify: (values) => {
               // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
         
-                return `${(values?.title || "")}`.replace(/[^a-zA-Z ]/g, '').replace(/ /g, '-').replace(/-*/g, '-').toLowerCase();
+                return `${(values?.title || "")}`.replace(/[^W+]/g, '-').toLowerCase();
               
             },
           },
