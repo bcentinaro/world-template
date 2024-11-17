@@ -473,6 +473,11 @@ export default defineConfig({
             label: "public"
           },
           {type: "object", name: "details", label: "Details", fields: [
+            {
+              type: "image", 
+              name: "image",
+              label: "Location Image"
+            },
             {type: "object", name: "characters", label: "Main Characters", list: true,
               ui: {
                 itemProps: (item) => {
@@ -497,7 +502,7 @@ export default defineConfig({
         path: "_chapters",
         defaultItem: () => {
           return {
-            layout: "story",
+            layout: "chapter",
             theme: "default",
           }
         },
@@ -582,6 +587,11 @@ export default defineConfig({
             label: "Published"
           },
           {type: "object", name: "details", label: "Details", fields: [
+            {
+              type: "image", 
+              name: "image",
+              label: "Location Image"
+            },
             {type: "object", name: "characters", label: "Significant Characters", list: true,
               ui: {
                 itemProps: (item) => {

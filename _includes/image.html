@@ -1,4 +1,4 @@
-{%- assign image = include.url | default: "/assets/logo.png" -%}
+{%- assign image = include.url | default: include.fallback | default: "/assets/logo.png" -%}
 <picture class="{{ include.class }}">
     {% if jekyll.environment == "production" %}
     <source type="image/webp" srcset="{{ image }}.webp" loading="lazy" class="{{ include.image_class}}" />
