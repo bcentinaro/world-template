@@ -23,4 +23,8 @@
   h6 { @apply font-bold text-xl pb-5; }
 
   h7 { @apply font-bold text-xl pb-5; }
+
+  ul { @apply list-square; }
+
+  ol { @pply list-roman; }
 }
