@@ -11,7 +11,8 @@
         {% if item.details.head %}
         {%- assign item = site.documents | where: "path", item.details.head | first -%}
             <li><b>Leader:</b> {{item.title}}</li>
-        {% endif %}   
+        {% endif %}  
+        {% if item.details.headquarters %} 
         {%- assign item = site.documents | where: "path", item.details.headquarters | first -%}
             <li><b>Headquarters:</b> {{item.title}}</li>
         {% endif %}
