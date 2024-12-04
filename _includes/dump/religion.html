@@ -2,7 +2,6 @@
 {%- if items != [] -%}
     {%- for item in items -%}
     <h1>Religion: {{ item.title }} </h1>
-    <h2>Core Details</h2>
     <ul>
         {% if item.details.diety %}
         {%- assign item = site.documents | where: "path", item.details.diety | first -%}
@@ -17,7 +16,6 @@
             <li><b>Headquarters:</b> {{item.title}}</li>
         {% endif %}
     </ul>
-    <h2>Overview</h2>
     {{ item.content }}
 {%- endfor -%}
 {%- endif -%}

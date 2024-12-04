@@ -2,9 +2,6 @@
 {%- assign characters = site.characters | where: "published", true -%}
 {%- for item in characters -%}
     <h1>Character: {{ item.title }} </h1>
-    <h2>Bio</h2>
-    {{ item.content }}
-    <h2>Core Details</h2>
     <ul>
         {% if item.species %}
             {% assign species = site.species | where: "path", item.species | first %}
@@ -19,6 +16,8 @@
         {% endif %}
         
     </ul>
+    {{ item.content }}
+
     {% if item.details.relationships %}
         <h2>Relationships</h2>
         {%- for item in item.details.relationships -%}
@@ -45,7 +44,7 @@
     {% endif %}
     </ul>
     {{item.details.appearance.overview}}
-    <h4>Personality</h4>
+    <h2>Personality</h2>
     <ul>
         {% if item.details.personality.flaw %}
             <li><b>Greatest Flaw:</b> {{item.details.personality.flaw}}</li>
@@ -85,7 +84,7 @@
         <h3>Primary Confilct</h3> 
         {{item.details.personality.conflict}}
     {% endif %}
-    <h2>Ability</h2>
+    <h2>Abilities</h2>
     {% if item.details.ability.notable_skills %}
         <h3>Notable Skills</h3> 
         <ul>
