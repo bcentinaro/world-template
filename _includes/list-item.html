@@ -3,6 +3,8 @@
 {% include card/chapter.html item=include.item  caption=include.caption %}
 {%- when 'story' -%}
 {% include card/story.html item=include.item  caption=include.caption %}
+{%- when 'religion' -%}
+{% include card/religion.html item=include.item  caption=include.caption %}
 {%- else -%}
 {% include card/default.html item=include.item  caption=include.caption %}
 {%- endcase -%}
