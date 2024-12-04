@@ -14,9 +14,9 @@ layout: default
                 {% endif %}
                 <h2 class="text-xl font-bold">Core Details</h2>
                 <ul>
-                    {% if page.details.deity %}
-                        {% assign item = site.deities | where: "path", page.details.deity | first %}
-                        <li><span class="font-bold">Deity:</span> <a class="underline" href="{{ item.url }}">{{ item.title }}</a></li>
+                    {% if page.details.diety %}
+                        {% assign item = site.documents | where: "path", page.details.diety | first %}
+                        <li><span class="font-bold">Diety:</span> <a class="underline" href="{{ item.url }}">{{ item.title }}</a></li>
                     {% endif %}
                     {% if page.details.head %}
                         {% assign item = site.characters | where: "path", page.details.head | first %}

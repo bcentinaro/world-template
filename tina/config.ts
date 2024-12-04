@@ -347,9 +347,9 @@ export default defineConfig({
             label: "Image"
           },
           {type: "object", name: "details", label: "Details", fields: [
-            {type: "reference", name: "diety", label: "Diety", required: true, collections: ['dieties']},
-            {type: "reference", name: "head", label: "Head", required: true, collections: ['characters']},
-            {type: "reference", name: "headquarters", label: "Headquarters", required: true, collections: ['locations']},
+            {type: "reference", name: "diety", label: "Diety", collections: ['dieties']},
+            {type: "reference", name: "head", label: "Head", collections: ['characters']},
+            {type: "reference", name: "headquarters", label: "Headquarters", collections: ['locations']},
           ] 
           },
           {
