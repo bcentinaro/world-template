@@ -26,14 +26,10 @@ collections:
     output: true
     sort_by: title
     link: true
-  nations: 
-    output: true
-    sort_by: title
-    link: true
   dieties:
     output: true
     sort_by: title
-    link: true
+    link: false
   locations: 
     output: true
     sort_by: title
@@ -47,8 +43,11 @@ collections:
   chapters: 
     output: true
     sort_by: story
-
   species: 
+    output: true
+    sort_by: title
+    link: true
+  religions:
     output: true
     sort_by: title
     link: true

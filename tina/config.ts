@@ -116,7 +116,7 @@ export default defineConfig({
             {type: "object", name: "core", label: "Core Details", fields: [
               {type: "number", name: "age", label: "Age"},
               {type: "string", name: "occupation", label: "Occupation", required: true},
-              {type: "reference", name: "religion", label: "Religion", collections: ['dieties']},
+              {type: "reference", name: "religion", label: "Religion", collections: ['religions']},
             ]}, 
             {type: "object", name: "appearance", label: "Appearance", fields: [
               {type: "string", name: "hair", label: "Hair Color", required: true},
@@ -171,7 +171,7 @@ export default defineConfig({
             }, 
             fields: [
               {type: "string", name: "caption", label: "Caption", required: true},
-              {type: "reference", name: "id", label: "Connection (Locations and Organizations)", required: true, collections: ['organizations', 'locations']},
+              {type: "reference", name: "id", label: "Connection (Locations and Organizations)", required: true, collections: ['organizations', 'locations', 'religions']},
             ]},
             {type: "object", name: "images", label: "Images", fields: [
               {
@@ -273,6 +273,83 @@ export default defineConfig({
               },
             ] 
             }, 
+          ] 
+          },
+          {
+            type: "datetime", 
+            name: "last_modified_at", 
+            label: "Last Updated"
+          }
+        ],
+      },
+      // Religion 
+      {
+        name: "religions",
+        label: "Religions",
+        path: "_religions",
+        defaultItem: () => {
+          return {
+            layout: "religion",
+            theme: "default",
+          }
+        },
+        ui: {
+          filename: {
+            slugify: (values) => {
+              // Values is an object containing all the values of the form. In this case it is {title?: string, topic?: string}
+        
+                return `${(values?.title || "").trim().replace(/\W+/g, '-')}`.toLowerCase();
+              
+            },
+          },
+        },
+        fields: [
+          {
+            type: "string",
+            name: "title",
+            label: "Title",
+            isTitle: true,
+            required: true,
+          },
+          {
+            type: "string",
+            name: "excerpt", 
+            label: "Caption",
+          },
+          {
+            type: "string",
+            name: "layout",
+            label: "Layout",
+            required: true,
+            options: ["religion"], 
+            ui: {
+              component: ({ input }) => {
+                return ("");
+              },
+            }
+          },
+          {
+            type: "string",
+            name: "theme",
+            label: "Page Theme",
+            required: true,
+            options: themes, 
+          },
+          {
+            type: "rich-text",
+            name: "body",
+            label: "Body",
+            isBody: true,
+          },
+          {
+            type: "image", 
+            name: "image",
+            label: "Image"
+          },
+          {type: "object", name: "details", label: "Details", fields: [
+            {type: "reference", name: "diety", label: "Diety", required: true, collections: ['dieties']},
+            {type: "reference", name: "head", label: "Head", required: true, collections: ['characters']},
+            {type: "reference", name: "headquarters", label: "Headquarters", required: true, collections: ['locations']},
           ] 
           },
           {
