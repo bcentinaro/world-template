@@ -4,11 +4,11 @@
     <h1>Character: {{ item.title }} </h1>
     <ul>
         {% if item.species %}
-            {% assign species = site.species | where: "path", item.species | first %}
+            {% assign species = site.documents | where: "path", item.species | first %}
             <li><b>Species:</b> {{ species.title }}</li>
         {% endif %}
         {% if item.details.core.religion %}
-            {% assign religion = site.dieties | where: "path", item.details.core.religion | first %}
+            {% assign religion = site.documents | where: "path", item.details.core.religion | first %}
             <li><b>Primary Religion:</b>{{ religion.title }}</li>
         {% endif %}
         {% if item.details.core.occupation %}
