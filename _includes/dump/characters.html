@@ -1,8 +1,10 @@
-<h2>Characters</h2>
+
 {%- assign characters = site.characters | where: "published", true -%}
 {%- for item in characters -%}
-    <h3> {{ item.title }} </h2>
-    <h4>Core Details</h3>
+    <h1>Character: {{ item.title }} </h1>
+    <h2>Bio</h2>
+    {{ item.content }}
+    <h2>Core Details</h2>
     <ul>
         {% if item.species %}
             {% assign species = site.species | where: "path", item.species | first %}
@@ -18,20 +20,19 @@
         
     </ul>
     {% if item.details.relationships %}
-        <h4>Relationships</h4>
+        <h2>Relationships</h2>
         {%- for item in item.details.relationships -%}
             {% include dump/connection.html item=item reverse=true%}
         {%- endfor -%}
     {% endif %}
     {% if item.details.connections %}
-        <h4>Connections</h4>
+        <h2>Connections</h2>
         {%- for item in item.details.connections -%}
             {% include dump/connection.html item=item reverse=false%}
         {%- endfor -%}
     {% endif %}
-    <h4>Bio</h4>
-    {{ item.content }}
-    <h4>Apperance</h4>
+
+    <h2>Apperance</h2>
     <ul>
     {% if item.details.appearance.hair %}
         <li><b>Hair Color:</b> {{item.details.appearance.hair}}</li>
@@ -57,42 +58,42 @@
         {% endif %}
     </ul>
     {% if item.details.personality.ideal %}
-        <h5>Ideal Life</h5> 
+        <h3>Ideal Life</h3> 
         {{item.details.personality.ideal}}
     {% endif %}
     {% if item.details.personality.power %}
-        <h5>Thoughts on Power</h5> 
+        <h3>Thoughts on Power</h3> 
         {{item.details.personality.power}}
     {% endif %}
     {% if item.details.personality.ambition %}
-        <h5>Thoughts on Ambition</h5> 
+        <h3>Thoughts on Ambition</h3> 
         {{item.details.personality.ambition}}
     {% endif %}
     {% if item.details.personality.love %}
-        <h5>Thoughts on love</h5> 
+        <h3>Thoughts on love</h3> 
         {{item.details.personality.love}}
     {% endif %}
     {% if item.details.personality.change %}
-        <h5>Thoughts on Change</h5> 
+        <h3>Thoughts on Change</h3> 
         {{item.details.personality.change}}
     {% endif %}
     {% if item.details.personality.motiviation %}
-        <h5>Primary Motiviation</h5> 
+        <h3>Primary Motiviation</h3> 
         {{item.details.personality.motiviation}}
     {% endif %}
     {% if item.details.personality.conflict %}
-        <h5>Primary Confilct</h5> 
+        <h3>Primary Confilct</h3> 
         {{item.details.personality.conflict}}
     {% endif %}
-    <h4>Ability</h4>
+    <h2>Ability</h2>
     {% if item.details.ability.notable_skills %}
-        <h5>Notable Skills</h5> 
+        <h3>Notable Skills</h3> 
         <ul>
             {%- for skill in item.details.ability.notable_skills -%}<li>{{skill}}</li>{%- endfor -%}
         </ul>
     {% endif %}
     {% if item.details.ability.weapon %}
-    <h5>Fightning Style</h5>
+    <h2>Fightning Style</h2>
     <p><b>Weapon: {{item.details.ability.weapon}}</b></p>
     <p>{{ item.details.ability.fighting_style | newline_to_br }}</p>
     {%- endif -%}

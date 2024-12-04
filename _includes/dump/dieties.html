@@ -1,9 +1,8 @@
 {%- assign items = site.dieties -%}
 {%- if items != [] -%}
-    <h2>Dieties</h2>
     {%- for item in items -%}
-    <h3> {{ item.title }} </h3>
-    <h4>Core Details</h4>
+    <h1> Diety: {{ item.title }} </h1>
+    <h2>Core Details</h2>
     <ul>
         {% if item.excerpt %}
             <li><b>Domain:</b> {{item.excerpt}}</li>
@@ -12,7 +11,7 @@
             <li><b>Influence:</b> {{item.details.type }}</li>
         {% endif %}        
     </ul>
-    <h4>Overview</h4>
+    <h2>Overview</h2>
     {{ item.content }}
 {%- endfor -%}
 {%- endif -%}

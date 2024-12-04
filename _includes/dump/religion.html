@@ -1,0 +1,22 @@
+{%- assign items = site.religions -%}
+{%- if items != [] -%}
+    {%- for item in items -%}
+    <h1>Religion: {{ item.title }} </h1>
+    <h2>Core Details</h2>
+    <ul>
+        {% if item.details.diety %}
+        {%- assign item = site.documents | where: "path", item.details.diety | first -%}
+            <li><b>Main Deity:</b> {{item.title}}</li>
+        {% endif %}
+        {% if item.details.head %}
+        {%- assign item = site.documents | where: "path", item.details.head | first -%}
+            <li><b>Leader:</b> {{item.title}}</li>
+        {% endif %}   
+        {%- assign item = site.documents | where: "path", item.details.headquarters | first -%}
+            <li><b>Headquarters:</b> {{item.title}}</li>
+        {% endif %}
+    </ul>
+    <h2>Overview</h2>
+    {{ item.content }}
+{%- endfor -%}
+{%- endif -%}

@@ -1,8 +1,8 @@
-<h2>Locations</h2>
+
 {%- assign locations = site.locations -%}
 {%- for item in locations -%}
-    <h3> {{ item.title }} </h3>
-    <h4>Core Details</h4>
+    <h1>Location: {{ item.title }} </h1>
+    <h2>Core Details</h2>
     <ul>
         {%- assign item_parent = site.documents | where: "path", item.parent | first -%}
         {% if item_parent %}
@@ -16,6 +16,6 @@
             <li>{{item.excerpt }}</li>
         {% endif %}        
     </ul>
-    <h4>Overview</h4>
+    <h2>Overview</h2>
     {{ item.content }}
 {%- endfor -%}
