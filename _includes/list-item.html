@@ -1,8 +1,8 @@
 {%- case include.item.layout -%}
 {%- when 'chapter' -%}
-{% include card/chapter.html item=include.item  caption=include.reference.caption %}
+{% include card/chapter.html item=include.item  caption=include.caption %}
 {%- when 'story' -%}
-{% include card/story.html item=include.item  caption=include.reference.caption %}
+{% include card/story.html item=include.item  caption=include.caption %}
 {%- else -%}
-{% include card/default.html item=include.item  caption=include.reference.caption %}
+{% include card/default.html item=include.item  caption=include.caption %}
 {%- endcase -%}

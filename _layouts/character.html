@@ -37,7 +37,7 @@ layout: default
                         <li><span class="font-bold">Eye Color:</span> {{page.details.appearance.eye}}</li>
                     {% endif %}
                     {% if page.details.core.religion %}
-                        {% assign religion = site.dieties | where: "path", page.details.core.religion | first %}
+                        {% assign religion = site.religions | where: "path", page.details.core.religion | first %}
                         <li><span class="font-bold">Primary Religion:</span> <a class="underline" href="{{ religion.url }}">{{ religion.title }}</a></li>
                     {% endif %}
                     {% if page.details.core.occupation %}
