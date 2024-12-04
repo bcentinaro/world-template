@@ -1,5 +1,5 @@
 
-{%- assign characters = site.characters | where: "published", true -%}
+{%- assign characters = site.characters -%}
 {%- for item in characters -%}
     <h1>Character: {{ item.title }} </h1>
     <ul>
