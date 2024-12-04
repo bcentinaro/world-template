@@ -7,7 +7,7 @@ const branch =
   process.env.HEAD ||
   "main";
 
-  const themes = [{value: "default", label: "Fae Realms"}, {value: "ceil_nior", label: "Ceil Nior"}, {value: "everbloom", label: "Everbloom"}, {value: "taraj", label: "Taraj"}, {value: "nivalia", label: "Nivalia"}, {value: "hirutai", label: "Hirutai"}, {value: "celestia", label: "Celestia"}];
+  const themes = [{value: "default", label: "default"}];
 
 
 export default defineConfig({
