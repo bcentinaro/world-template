@@ -7,6 +7,5 @@ layout: home
 permalink: index.html
 pagination:
   enabled: false
-excerpt: The Far Away Etheral Realms, a magical universe set in a semi-modern era. 
 last_modified_at: now
 ---
