@@ -9,7 +9,7 @@ layout: default
       "name": "{{ page.title }}",
       "sameAs": "{{ site.url }}{{page.url}}",
       "description": "{{ page.description | default: page.excerpt | default: site.description }}",
-      "image":  "{{ site.url }}{{ page.image | default: site.logo | default: '/assets/image/logo.png' }}"
+      "image":  "{{ site.url }}{{ page.item_image | default: site.logo | default: '/assets/image/logo.png' }}"
       
     }
 </script>
@@ -21,8 +21,8 @@ layout: default
                 <div class="content">{{ content }}</div>
             </div>
             <div class="p-3">
-                {% if page.image  %}
-                    {% include image.html url=page.image caption=page.title class="rounded-lg max-w-full" %}               
+                {% if page.item_image  %}
+                    {% include image.html url=page.item_image caption=page.title class="rounded-lg max-w-full" %}               
                 {% endif %}
                 <h2 class="text-xl font-bold">Core Details</h2>
                 <ul>
@@ -44,8 +44,8 @@ layout: default
                         <li><span class="font-bold">Occupation:</span> {{page.details.core.occupation}}</li>
                     {% endif %}
                 </ul>
-                {%- if page.details.images -%}
-                    {%- for image in page.details.images -%}
+                {%- if page.details.additional_images -%}
+                    {%- for image in page.details.additional_images -%}
                         {% include image.html url=image.image caption=image.caption class="rounded-lg max-w-full" %} 
                     {%- endfor -%}              
                 {% endif %}

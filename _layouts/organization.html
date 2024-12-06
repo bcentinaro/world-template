@@ -7,8 +7,8 @@ layout: default
         <div class="">
 
             <div class="content">
-                {% if page.image  %}
-                    {% include image.html url=page.image caption=page.title image_class="rounded-lg float-right ml-3 max-h-96 max-w-[50%]" %}                    
+                {% if page.item_image  %}
+                    {% include image.html url=page.item_image caption=page.title image_class="rounded-lg float-right ml-3 max-h-96 max-w-[50%]" %}                    
                 {% endif %}
                 {{ content }}
 

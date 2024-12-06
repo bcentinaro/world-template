@@ -111,7 +111,7 @@ export default defineConfig({
           },
           {type: "string", name: "description", label: "Short Description"},
           {type: "reference", name: "species", label: "Species/Race", required: true, collections: ['species']},
-          {type: "image", name: "image", label: "Image"},
+          {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "significant_events", label: "Significant Events", list: true},
             {type: "object", name: "core", label: "Core Details", fields: [
@@ -174,7 +174,7 @@ export default defineConfig({
               {type: "string", name: "caption", label: "Caption", required: true},
               {type: "reference", name: "id", label: "Connection (Locations and Organizations)", required: true, collections: ['organizations', 'locations', 'religions']},
             ]},
-            {type: "object", name: "images", label: "Images", list: true,
+            {type: "object", name: "additional_images", label: "Images", list: true,
               ui: {
                 itemProps: (item) => {
                  if (item?.caption) {
@@ -257,7 +257,7 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
-          {type: "image", name: "image", label: "Image"},
+          {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "type", label: "Type", required: true, options: ["celestial", "greater", "lesser", "matron", "patron"]},
           ] 
@@ -328,11 +328,7 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
-          {
-            type: "image", 
-            name: "image",
-            label: "Image"
-          },
+          {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "reference", name: "diety", label: "Diety", collections: ['dieties']},
             {type: "reference", name: "head", label: "Head", collections: ['characters']},
@@ -412,7 +408,7 @@ export default defineConfig({
             label: "Body",
             isBody: true,
           },
-          {type: "image", name: "image", label: "Image"},
+          {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "type", label: "Type", required: true, options: ["nation", "region", "city", "city district", "town", "village", "landmark", "building", "other"]},
             {type: "object", name: "connections", label: "Connections", list: true,
@@ -431,20 +427,6 @@ export default defineConfig({
               {type: "string", name: "type", label: "Type", required: true, options: ["member"]},
               {type: "reference", name: "id", label: "Organization", required: true, collections: ['organizations']},
             ]},
-            {type: "object", name: "images", label: "Images", list: true,
-              ui: {
-                itemProps: (item) => {
-                 if (item?.caption) {
-                      return { label: item?.caption };
-                 }  
-                return { label: "Unknown" };
-                  
-                },
-              }, 
-              fields: [
-                {type: "string", name: "caption", label: "Caption", required: true},
-                {type: "image", name: "image", label: "Image", required: true},
-              ]},
           ] 
           },
           {type: "reference", name: "parent", label: "parent", collections: ["locations"]},
@@ -535,7 +517,7 @@ export default defineConfig({
             name: "public",
             label: "public"
           },
-          {type: "image", name: "image", label: "Image"},
+          {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "object", name: "characters", label: "Main Characters", list: true,
               ui: {
@@ -645,7 +627,7 @@ export default defineConfig({
             name: "published",
             label: "Published"
           },
-          {type: "image", name: "image", label: "Image"},
+          {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "object", name: "characters", label: "Significant Characters", list: true,
               ui: {
@@ -760,26 +742,10 @@ export default defineConfig({
             label: "Last Updated"
           },
           {type: "string", name: "caption", label: "Caption"},
-          {type: "image", name: "image", label: "Image", required: true},
+          {type: "image", name: "item_image", label: "Image"},
           {type: "reference", name: "location", label: "Location", collections: ['locations']},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "type", label: "Type", required: true, options: ["buisness", "religious", "government"]},
-
-            {type: "object", name: "images", label: "Images", list: true,
-              ui: {
-                itemProps: (item) => {
-                 if (item?.caption) {
-                      return { label: item?.caption };
-                 }  
-                return { label: "Unknown" };
-                  
-                },
-              }, 
-              fields: [
-                {type: "string", name: "caption", label: "Caption", required: true},
-                {type: "image", name: "image", label: "Image", required: true},
-              ]
-            },
           ] 
           },
         ]
@@ -844,7 +810,7 @@ export default defineConfig({
 
             isBody: true,
           },
-          {type: "image", name: "image", label: "Image"}
+          {type: "image", name: "item_image", label: "Image"}
         ]
       }
     ],

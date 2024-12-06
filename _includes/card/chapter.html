@@ -1,5 +1,5 @@
 {%- assign story = site.documents | where: "path", include.item.story | first -%}
-{%- assign image = include.item.details.image | default: story.details.image -%}
+{%- assign image = include.item.item_image | default: story.item_image -%}
 <div class="mx-auto" data-type="chapter">
     <a href="{{ include.item.url }}" class="block">
         <div class="p-4">

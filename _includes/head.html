@@ -15,13 +15,13 @@
   <meta name="description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html  }}">
   <meta name="og:title" content="{{ page.title }} - {{ site.title }}">
   <meta name="og:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html }}">
-  <meta name="og:image" content="{{ site.url }}{{ page.image | default: site.logo | default: '/assets/image/logo.png' }}">
+  <meta name="og:image" content="{{ site.url }}{{ page.item_image | default: site.logo | default: '/assets/image/logo.png' }}">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="{{ site.twitter}}">
   <meta name="twitter:title" content="{{ site.title }} - {{ page.title }}">
   <meta name="twitter:description" content="{{ page.description | default: page.excerpt | default: site.description | strip_html }}">
-  <meta name="twitter:image" content="{{ site.url }}{{ page.image | default: site.logo | default: '/assets/image/logo.png' }}">
+  <meta name="twitter:image" content="{{ site.url }}{{ page.item_image | default: site.logo | default: '/assets/image/logo.png' }}">
   <link rel="stylesheet" href="/assets/css/main.css" />
   <link rel="icon" type="image/png" href="/assets/logo.png">
 </head>
