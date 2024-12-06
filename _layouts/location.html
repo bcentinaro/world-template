@@ -9,7 +9,7 @@ layout: default
         "name": "{{ page.title }}",
         "sameAs": "{{ site.url }}{{page.url}}",
         "description": "{{ page.description | default: page.excerpt | default: site.description }}",
-        "image":  "{{ site.url }}{{ page.details.images.thumbnail | default: page.image | default: site.logo | default: '/assets/image/logo.png' }}"
+        "image":  "{{ site.url }}{{ page.image | default: site.logo | default: '/assets/image/logo.png' }}"
       }
 </script>
 
@@ -24,9 +24,9 @@ layout: default
         <div class="">
 
             <div class="content">
-                {% if page.details.images.image  %}
+                {% if page.image  %}
                 <div class="float-right">
-                    {% include image.html url=page.details.images.image caption=page.title image_class="rounded-lg ml-3 max-h-96" %}                    
+                    {% include image.html url=page.image caption=page.title image_class="rounded-lg ml-3 max-h-96" %}                    
                 </div>
                 {% endif %}
                 {{ content }}

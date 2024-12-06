@@ -1,7 +1,7 @@
 <div class="mx-auto">
     <a href="{{ include.item.url }}" class="block">
     <div class="p-4">
-        {% include image.html url=include.item.details.images.thumbnail caption=include.item.title class="pb-5 max-w-full" %}
+        {% include image.html url=include.item.image caption=include.item.title class="pb-5 max-w-full" %}
         <p class="text-center text-gray-500">{{ include.caption | default: include.item.caption | default: include.item.excerpt }}</p>
         {% if include.updated_at %}<span class="text-end text-sm">Last Updated: {{ include.updated_at | date: "%b %-d, %Y" }}</span>{% endif %}  
     </div>

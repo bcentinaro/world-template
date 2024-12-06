@@ -9,8 +9,8 @@ layout: default
                 <div class="content">{{ content }}</div>
             </div>
             <div class="p-3">
-                {% if page.details.images.image  %}
-                    {% include image.html url=page.details.images.image caption=page.title class="rounded-lg max-w-full" %}               
+                {% if page.image  %}
+                    {% include image.html url=page.image caption=page.title class="rounded-lg max-w-full" %}               
                 {% endif %}
             </div>
         </div>
