@@ -45,8 +45,8 @@ layout: default
                     {% endif %}
                 </ul>
                 {%- if page.details.additional_images -%}
-                    {%- for image in page.details.additional_images -%}
-                        {% include image.html url=image.image caption=image.caption class="rounded-lg max-w-full" %} 
+                    {%- for item in page.details.additional_images -%}
+                    {% include image.html url=item.image caption=item.caption class="rounded-lg max-w-full" %}     
                     {%- endfor -%}              
                 {% endif %}
             </div>
