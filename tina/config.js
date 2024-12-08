@@ -10,10 +10,11 @@ const branch =
   const themes = [{value: "default", label: "default"}];
 
   const statBlock = [];
-  const characterSheet = {
+  var characterSheet = {
     type: "boolean",
     name: "character_sheet",
-    label: "Character Sheet"
+    label: "Character Sheet",
+    templates: false
   }
 
 
@@ -120,6 +121,7 @@ export default defineConfig({
           {type: "string", name: "description", label: "Short Description"},
           {type: "reference", name: "species", label: "Species/Race", required: true, collections: ['species']},
           {type: "image", name: "item_image", label: "Image"},
+          characterSheet,
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "significant_events", label: "Significant Events", list: true},
             {type: "object", name: "core", label: "Core Details", fields: [
