@@ -38,6 +38,10 @@ layout: default
                 {% include list.html items=pages %}
             </div>
             {% if page.details.connections %}
+            {% if page.character_sheet %}
+                <h2 class="text-xl font-bold">Sheet</h2>
+                {% include character-sheet.html sheet=page.character_sheet %}
+            {% endif %}
             <h2 class="text-xl font-bold">Connections</h2>              
             {%- include list.html references=page.details.connections -%}
         {% endif %}

@@ -55,9 +55,9 @@ layout: default
                 {% endif %}
             </div>
         </div>
-        {% if page.details.character_sheet %}
+        {% if page.character_sheet %}
             <h2 class="text-xl font-bold">Sheet</h2>
-            {% include character-sheet.html sheet=page.details.character_sheet %}
+            {% include character-sheet.html sheet=page.character_sheet %}
         {% endif %}
         {% if page.details.relationships %}
             <h2 class="text-xl font-bold">Relationships</h2>
