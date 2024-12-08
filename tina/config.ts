@@ -59,6 +59,7 @@ export default defineConfig({
             layout: "character",
             theme: "default",
             type: "overview",
+            public: true
           }
         },
         fields: [
@@ -193,8 +194,8 @@ export default defineConfig({
           },
           {
             type: "boolean",
-            name: "published",
-            label: "Publish in Character List"
+            name: "public",
+            label: "Show on Homepage / Character List"
           }
         ],
       },
@@ -207,6 +208,7 @@ export default defineConfig({
           return {
             layout: "diety",
             theme: "default",
+            public: true
           }
         },
         ui: {
@@ -263,6 +265,11 @@ export default defineConfig({
           ] 
           },
           {
+            type: "boolean",
+            name: "public",
+            label: "Show on Homepage / Diety List"
+          },
+          {
             type: "datetime", 
             name: "last_modified_at", 
             label: "Last Updated"
@@ -278,6 +285,7 @@ export default defineConfig({
           return {
             layout: "religion",
             theme: "default",
+            public: true
           }
         },
         ui: {
@@ -339,6 +347,11 @@ export default defineConfig({
             type: "datetime", 
             name: "last_modified_at", 
             label: "Last Updated"
+          },
+          {
+            type: "boolean",
+            name: "public",
+            label: "Show on Homepage / Religion List"
           }
         ],
       },
@@ -352,6 +365,7 @@ export default defineConfig({
             layout: "location",
             theme: "default",
             type: "overview",
+            public: true
 
           }
         },
@@ -409,6 +423,11 @@ export default defineConfig({
             isBody: true,
           },
           {type: "image", name: "item_image", label: "Image"},
+          {
+            type: "boolean",
+            name: "public",
+            label: "Show on Homepage"
+          },
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "type", label: "Type", required: true, options: ["nation", "region", "city", "city district", "town", "village", "landmark", "building", "other"]},
             {type: "object", name: "connections", label: "Connections", list: true,
@@ -434,11 +453,6 @@ export default defineConfig({
             type: "datetime", 
             name: "last_modified_at", 
             label: "Last Updated"
-          },
-          {
-            type: "boolean",
-            name: "published",
-            label: "Published"
           }
         ],
       },
@@ -451,6 +465,7 @@ export default defineConfig({
           return {
             layout: "story",
             theme: "default", 
+            public: true
 
           }
         },
@@ -515,7 +530,7 @@ export default defineConfig({
           {
             type: "boolean",
             name: "public",
-            label: "public"
+            label: "Show on Homepage"
           },
           {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
@@ -545,6 +560,7 @@ export default defineConfig({
           return {
             layout: "chapter",
             theme: "default",
+            public: true
           }
         },
         ui: {
@@ -627,6 +643,11 @@ export default defineConfig({
             name: "published",
             label: "Published"
           },
+          {
+            type: "boolean",
+            name: "public",
+            label: "Show on Homepage"
+          },
           {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "object", name: "characters", label: "Significant Characters", list: true,
@@ -700,7 +721,8 @@ export default defineConfig({
         defaultItem: () => {
           return {
             layout: "organization",
-            theme: "default"
+            theme: "default",
+            public: true
           }
         },
         fields: [
@@ -741,6 +763,11 @@ export default defineConfig({
             name: "last_modified_at", 
             label: "Last Updated"
           },
+          {
+            type: "boolean",
+            name: "public",
+            label: "Show on Homepage / Organizatio List"
+          },
           {type: "string", name: "caption", label: "Caption"},
           {type: "image", name: "item_image", label: "Image"},
           {type: "reference", name: "location", label: "Location", collections: ['locations']},
@@ -771,6 +798,7 @@ export default defineConfig({
             layout: "species",
             theme: "default",
             type: "overview",
+            public: false
           }
         },
         fields: [
