@@ -17,10 +17,14 @@ layout: default
     <div class="p-3 rounded-lg bg-white">
         <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
         <div class="pt-3 min-h-[26rem] grid grid-cols-4">
-            <div class="col-span-3">
+            <div class="col-span-3 sm:col-span-4">
                 <div class="content">{{ content }}</div>
+                {% if page.character_sheet %}
+                    <h2 class="text-xl font-bold">Sheet</h2>
+                    {% include character-sheet.html sheet=page.character_sheet %}
+                {% endif %}
             </div>
-            <div class="p-3">
+            <div class="p-3 sm:col-span-4">
                 {% if page.item_image  %}
                     {% include image.html url=page.item_image caption=page.title class="rounded-lg max-w-full" %}               
                 {% endif %}
@@ -55,10 +59,6 @@ layout: default
                 {% endif %}
             </div>
         </div>
-        {% if page.character_sheet %}
-            <h2 class="text-xl font-bold">Sheet</h2>
-            {% include character-sheet.html sheet=page.character_sheet %}
-        {% endif %}
         {% if page.details.relationships %}
             <h2 class="text-xl font-bold">Relationships</h2>
             {% include list-small.html references=page.details.relationships %}
