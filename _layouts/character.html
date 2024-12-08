@@ -26,7 +26,7 @@ layout: default
                 {% endif %}
                 <h2 class="text-xl font-bold">Core Details</h2>
                 <ul>
-                    {% if page.species && page.species != '' %}
+                    {% if page.species %}
                         {% assign species = site.species | where: "path", page.species | first %}
                         {%- if species -%}
                         <li><span class="font-bold">Species:</span> <a class="underline" href="{{ species.url }}">{{ species.title }}</a></li>
