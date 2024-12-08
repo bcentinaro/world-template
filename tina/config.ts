@@ -9,6 +9,13 @@ const branch =
 
   const themes = [{value: "default", label: "default"}];
 
+  const statBlock = [];
+  const characterSheet = {
+    type: "boolean",
+    name: "character_sheet",
+    label: "Character Sheet"
+  }
+
 
 export default defineConfig({
   branch,
