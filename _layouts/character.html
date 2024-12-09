@@ -26,7 +26,7 @@ layout: default
             </div>
             <div class="p-3 sm:col-span-4">
                 {% if page.item_image  %}
-                    {% include image.html url=page.item_image caption=page.title class="rounded-lg max-w-full" %}               
+                    {% include image.html url=page.item_image caption=page.title class="rounded-lg max-w-full p-3" %}               
                 {% endif %}
                 <h2 class="text-xl font-bold">Core Details</h2>
                 <ul>
@@ -42,19 +42,37 @@ layout: default
                     {% if page.details.appearance.eye %}
                         <li><span class="font-bold">Eye Color:</span> {{page.details.appearance.eye}}</li>
                     {% endif %}
+                    {% if page.details.appearance.height %}
+                        <li><span class="font-bold">Height:</span> {{page.details.appearance.height}}</li>
+                    {% endif %}
+                    {% if page.details.appearance.weight %}
+                        <li><span class="font-bold">Weight:</span> {{page.details.appearance.weight}}</li>
+                    {% endif %}
+                    {% if page.details.appearance.build %}
+                        <li><span class="font-bold">Build:</span> {{page.details.appearance.build}}</li>
+                    {% endif %}
                     {% if page.details.core.religion  %}
                         {% assign religion = site.religions | where: "path", page.details.core.religion | first %}
                         {%- if religion -%}
                           <li><span class="font-bold">Primary Religion:</span> <a class="underline" href="{{ religion.url }}">{{ religion.title }}</a></li>
                         {%- endif -%}
                     {% endif %}
+                    {% if page.details.personality.motivation %}
+                        <li><span class="font-bold">Primary Motivation:</span> {{page.details.personality.motivation}}</li>
+                    {% endif %}
                     {% if page.details.core.occupation %}
                         <li><span class="font-bold">Occupation:</span> {{page.details.core.occupation}}</li>
                     {% endif %}
+                    {% for person in page.details.relationships %}
+                    {%- assign item = site.documents | where: "path", person.id | first -%}
+                        {%- if person.pin and item -%}
+                            <li><span class="font-bold">{{person.caption}}:</span> <a href="{{item.url}}">{{item.title}}</a></li>
+                        {%- endif -%}
+                    {% endfor %}
                 </ul>
                 {%- if page.details.additional_images -%}
                     {%- for item in page.details.additional_images -%}
-                    {% include image.html url=item.image caption=item.caption class="rounded-lg max-w-full" %}     
+                    {% include image.html url=item.image caption=item.caption class="rounded-lg max-w-full p-3" %}     
                     {%- endfor -%}              
                 {% endif %}
             </div>

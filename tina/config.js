@@ -133,6 +133,8 @@ export default defineConfig({
               {type: "string", name: "hair", label: "Hair Color", required: true},
               {type: "string", name: "eye", label: "Eye Color", required: true},
               {type: "string", name: "build", label: "Build", required: true},
+              {type: "string", name: "height", label: "Height", required: true}, 
+              {type: "string", name: "weight", label: "Weight", required: true}, 
               {type: "string", name: "distinguishing_features", label: "Distinguishing Features", list: true},
               {type: "string", name: "overview", label: "Overview", ui: {component: "textarea"}},
             ]}, 
@@ -166,7 +168,7 @@ export default defineConfig({
             }, 
             fields: [
               {type: "string", name: "caption", label: "Caption", required: true},
-              {type: "string", name: "type", label: "Type", required: true, options: ["parent", "child", "grandparent", "grandchild", "sibling", "cousin", "friend", "lover", "enemy", "rival", "mentor", "student", "employer", "employee", "business partner", "other"]},
+              {type: "boolean", name: "pin", label: "Pin to sidebar"}, 
               {type: "reference", name: "id", label: "Person", required: true, collections: ['characters']},
             ]}, 
             {type: "object", name: "connections", label: "Connections", list: true,
@@ -182,7 +184,7 @@ export default defineConfig({
             }, 
             fields: [
               {type: "string", name: "caption", label: "Caption", required: true},
-              {type: "reference", name: "id", label: "Connection (Locations and Organizations)", required: true, collections: ['organizations', 'locations', 'religions']},
+              {type: "reference", name: "id", label: "Connection", required: true, collections: ['organizations', 'locations', 'religions']},
             ]},
             {type: "object", name: "additional_images", label: "Images", list: true,
               ui: {
@@ -780,8 +782,9 @@ export default defineConfig({
           {type: "string", name: "caption", label: "Caption"},
           {type: "image", name: "item_image", label: "Image"},
           {type: "reference", name: "location", label: "Location", collections: ['locations']},
+          {type: "reference", name: "membbers", label: "Members", list: true, collections: ['locations']},
           {type: "object", name: "details", label: "Details", fields: [
-            {type: "string", name: "type", label: "Type", required: true, options: ["buisness", "religious", "government"]},
+            {type: "string", name: "type", label: "Type", required: true, options: ["buisness", "religious", "government", "other"]},
           ] 
           },
         ]
