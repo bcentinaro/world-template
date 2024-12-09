@@ -783,7 +783,16 @@ export default defineConfig({
           {type: "image", name: "item_image", label: "Image"},
           {type: "reference", name: "location", label: "Location", collections: ['locations']},
           
-          {type: "object", name: "members", label: "Members", list: true, fields: [
+          {type: "object", name: "members", label: "Members", list: true, 
+            ui: {
+              itemProps: (item) => {
+               if (item?.caption && item?.id) {
+                    return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")} (${item?.caption})` };
+               }
+                
+              },
+            }, 
+            fields: [
             {type: "string", name: "caption", label: "Caption", required: true},
             {type: "reference", name: "id", label: "Character", collections: ['characters']},
           ] 
