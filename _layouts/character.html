@@ -66,31 +66,31 @@ layout: default
                     </ul>
                     <h2 class="text-xl font-bold">Family</h2>
                     <ul>
-                    {% if page.details.social.status %}
+                    {% if page.details.family.status %}
                         {%- assign item = site.documents | where: "path", person.id | first -%}
                         {%- if person.pin and item -%}
                             <li><span class="font-bold">{{person.caption}}:</span> <a href="{{item.url}}">{{item.title}}</a></li>
                         {%- endif -%}
                     {% endif %}
-                    {% if page.details.social.partner %}
-                        {%- assign item = site.documents | where: "path", page.details.social.partner | first -%}
+                    {% if page.details.family.partner %}
+                        {%- assign item = site.documents | where: "path", page.details.family.partner | first -%}
                         {%- if item -%}
                             <li><span class="font-bold">{% include text/partner.html gender=item.appearance.gender status=page.details.social.status %}:</span> <a href="{{item.url}}">{{item.title}}</a></li>
                         {%- endif -%}
                     {% endif %}
-                    {% for parent in page.details.social.parents %}
+                    {% for parent in page.details.family.parents %}
                         {%- assign item = site.documents | where: "path", parent.id | first -%}
                         {%- if item -%}
                             <li><span class="font-bold">{% include text/parent.html gender=item.appearance.gender %}:</span> <a href="{{item.url}}">{{item.title}}</a></li>
                         {%- endif -%}
                     {% endfor %}
-                    {% for sibling in page.details.social.siblings %}
+                    {% for sibling in page.details.family.siblings %}
                         {%- assign item = site.documents | where: "path", sibling.id | first -%}
                         {%- if item -%}
                             <li><span class="font-bold">{% include text/sibling.html gender=item.appearance.gender %}:</span> <a href="{{item.url}}">{{item.title}}</a></li>
                         {%- endif -%}
                     {% endfor %}
-                    {% for child in page.details.social.children %}
+                    {% for child in page.details.family.children %}
                         {%- assign item = site.documents | where: "path", child.id | first -%}
                         {%- if item -%}
                             <li><span class="font-bold">{% include text/child.html gender=item.appearance.gender %}:</span> <a href="{{item.url}}">{{item.title}}</a></li>
@@ -106,34 +106,28 @@ layout: default
         </div>
         <h2 class="text-xl font-bold">Relationships</h2>
         <div class="py-10 grid 2xl:grid-cols-8 xl:grid-cols-8 lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 ">
-            {% if page.details.social.partner %}
-                    {%- assign item = site.documents | where: "path", page.details.social.partner | first -%}
-                    {%- if item -%}
-                        {% include list-item.html item=item  caption=page.details.social.partner_title %}
-                    {%- endif -%}
-                {% endif %}
-                {% if page.details.social.partner %}
-                    {%- assign item = site.documents | where: "path", page.details.social.partner | first -%}
+                {% if page.details.family.partner %}
+                    {%- assign item = site.documents | where: "path", page.details.family.partner | first -%}
                     {%- if item -%}
                         {% capture caption%}{% include text/partner.html gender=item.appearance.gender status=page.details.social.status %}{% endcapture %}
                         {% include list-item.html item=item  caption=caption %}
                     {%- endif -%}
                 {% endif %}
-                {% for parent in page.details.social.parents %}
+                {% for parent in page.details.family.parents %}
                     {%- assign item = site.documents | where: "path", parent.id | first -%}
                     {%- if item -%}
                         {% capture caption%}{% include text/parent.html gender=item.appearance.gender %}{% endcapture %}
                         {% include list-item.html item=item  caption=caption %}
                     {%- endif -%}
                 {% endfor %}
-                {% for sibling in page.details.social.siblings %}
+                {% for sibling in page.details.family.siblings %}
                     {%- assign item = site.documents | where: "path", sibling.id | first -%}
                     {%- if item -%}
                     {% capture caption%}{% include text/sibling.html gender=item.appearance.gender %}{% endcapture %}
                     {% include list-item.html item=item  caption=caption %}
                     {%- endif -%}
                 {% endfor %}
-                {% for child in page.details.social.children %}
+                {% for child in page.details.family.children %}
                     {%- assign item = site.documents | where: "path", child.id | first -%}
                     {%- if item -%}
                     {% capture caption%}{% include text/child.html gender=item.appearance.gender %}{% endcapture %}
