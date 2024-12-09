@@ -1,15 +1,15 @@
 {%- if include.status == "Single" or include.status == "Dating" -%}
     {%- if include.gender == "Male" -%}
     Ex-Husband
-    {%- else if include.gender == "Female" -%}
+    {%- elsif  include.gender == "Female" -%}
     Ex-Wife
     {%- else -%}
     Former Spouse
     {%- endif -%}
-{%- else if include.status == "Married" or include.status == "Widowed" -%}
+{%- elsif  include.status == "Married" or include.status == "Widowed" -%}
     {%- if include.gender == "Male" -%}
     Husband
-    {%- else if include.gender == "Female" -%}
+    {%- elsif  include.gender == "Female" -%}
     Wife
     {%- else -%}
     Spouse
@@ -17,7 +17,7 @@
 {%- else -%}
     {%- if include.gender == "Male" -%}
     Boyfriend
-    {%- else if include.gender == "Female" -%}
+    {%- elsif  include.gender == "Female" -%}
     Girlfriend
     {%- else -%}
     Partner
