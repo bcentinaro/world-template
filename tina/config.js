@@ -18,6 +18,16 @@ const branch =
   }
 
 
+  const referenceUI =  {
+    itemProps: (x) => {
+     if (item?.id) {return { label: item?.id.split("/").pop().split(".")[0].replaceAll("-", " ") };}
+    },
+  }
+  const captionUI =  {
+    itemProps: (x) => {
+     if (item?.id) {return { label: item?.caption };}
+    },
+  }
 export default defineConfig({
   branch,
 
@@ -130,6 +140,7 @@ export default defineConfig({
               {type: "reference", name: "religion", label: "Religion", collections: ['religions']},
             ]}, 
             {type: "object", name: "appearance", label: "Appearance", fields: [
+              {type: "string", name: "gender", label: "Gender", required: true, options: ["Male", "Female", "Non-Binary"]},
               {type: "string", name: "hair", label: "Hair Color", required: true},
               {type: "string", name: "eye", label: "Eye Color", required: true},
               {type: "string", name: "build", label: "Build", required: true},
@@ -155,47 +166,23 @@ export default defineConfig({
               {type: "string", name: "weapon", label: "Weapon(s) of Choice", required: true},
               {type: "string", name: "fighting_style", label: "Fighting Style", ui: {component: "textarea"}},
             ]}, 
-            {type: "object", name: "relationships", label: "Relationsihps", list: true,
-            ui: {
-              itemProps: (item) => {
-               if (item?.caption && item?.id) {
-                    return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")} (${item?.caption})` };
-               }
-                 
-              return { label: "Unknown" };
-                
-              },
-            }, 
+            {type: "object", name: "family", label: "Family", fields: [
+              {type: "string", name: "status", label: "Relationship Status", options: ["Single", "Dating", "Married", "Divorced", "Widowed"]},
+              {type: "reference", name: "partner", label: "Romantic Partner", collections: ['characters']},
+              {type: "object", name: "parents", label: "Parents", ui: referenceUI, list: true, fields: [{type: "reference", name: "id", label: "Parent", collections: ['characters']}]},
+              {type: "object", name: "siblings", label: "Siblings", ui: referenceUI, list: true, fields: [{type: "reference", name: "id", label: "Sibling", collections: ['characters']}]}, 
+              {type: "object", name: "children", label: "Children", ui: referenceUI, list: true, fields: [{type: "reference", name: "id", label: "Child", collections: ['characters']}]},
+              ]},
+            {type: "object", name: "people", label: "Other Relationships", ui: referenceUI, list: true, fields: [{type: "string", name: "caption", label: "Caption", required: true},{type: "reference", name: "id", label: "Child", collections: ['characters']}]},  
+            
+            {type: "object", name: "connections", label: "Other Connections", list: true,
+            ui: referenceUI, 
             fields: [
               {type: "string", name: "caption", label: "Caption", required: true},
-              {type: "boolean", name: "pin", label: "Pin to sidebar"}, 
-              {type: "reference", name: "id", label: "Person", required: true, collections: ['characters']},
-            ]}, 
-            {type: "object", name: "connections", label: "Connections", list: true,
-            ui: {
-              itemProps: (item) => {
-               if (item?.caption && item?.id) {
-                    return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")} (${item?.caption})` };
-               }
-                 
-              return { label: "Unknown" };
-                
-              },
-            }, 
-            fields: [
-              {type: "string", name: "caption", label: "Caption", required: true},
-              {type: "reference", name: "id", label: "Connection", required: true, collections: ['organizations', 'locations', 'religions']},
+              {type: "reference", name: "id", label: "Connection", required: true, collections: ['organizations', 'locations', 'religions', 'dieties']},
             ]},
             {type: "object", name: "additional_images", label: "Images", list: true,
-              ui: {
-                itemProps: (item) => {
-                 if (item?.caption) {
-                      return { label: item?.caption };
-                 }  
-                return { label: "Unknown" };
-                  
-                },
-              }, 
+              ui: captionUI, 
               fields: [
                 {type: "string", name: "caption", label: "Caption", required: true},
                 {type: "image", name: "image", label: "Image", required: true},
@@ -442,16 +429,7 @@ export default defineConfig({
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "type", label: "Type", required: true, options: ["nation", "region", "city", "city district", "town", "village", "landmark", "building", "other"]},
             {type: "object", name: "connections", label: "Connections", list: true,
-            ui: {
-              itemProps: (item) => {
-               if (item?.caption && item?.id) {
-                    return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")} (${item?.caption})` };
-               }
-                 
-              return { label: "Unknown" };
-                
-              },
-            }, 
+            ui: referenceUI, 
             fields: [
               {type: "string", name: "caption", label: "Caption", required: true},
               {type: "string", name: "type", label: "Type", required: true, options: ["member"]},
@@ -546,16 +524,7 @@ export default defineConfig({
           {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "object", name: "characters", label: "Main Characters", list: true,
-              ui: {
-                itemProps: (item) => {
-                 if (item?.id) {
-                      return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")}` };
-                 }
-                   
-                return { label: "Unknown" };
-                  
-                },
-              }, 
+              ui: referenceUI, 
               fields: [              
                 {type: "reference", name: "id", label: "Person", required: true, collections: ['characters']},
               ]}, 
@@ -662,19 +631,7 @@ export default defineConfig({
           {type: "image", name: "item_image", label: "Image"},
           {type: "object", name: "details", label: "Details", fields: [
             {type: "object", name: "characters", label: "Significant Characters", list: true,
-              ui: {
-                itemProps: (item) => {
-                 if (item?.caption && item?.id) {
-                      return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")} (${item?.caption})` };
-                 }
-                 if (item?.id) {
-                      return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")}` };
-                 }
-                   
-                return { label: "Unknown" };
-                  
-                },
-              }, 
+              ui: referenceUI, 
               fields: [{
                     type: "string", 
                     label: "Description", 
@@ -686,16 +643,7 @@ export default defineConfig({
                 {type: "reference", name: "id", label: "Person", required: true, collections: ['characters']},
               ]}, 
               {type: "object", name: "locations", label: "Significant Locations", list: true,
-                ui: {
-                  itemProps: (item) => {
-                   if (item?.id) {
-                        return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")}` };
-                   }
-                     
-                  return { label: "Unknown" };
-                    
-                  },
-                }, 
+                ui: referenceUI, 
                 fields: [
                   {
                     type: "string", 
@@ -777,21 +725,14 @@ export default defineConfig({
           {
             type: "boolean",
             name: "public",
-            label: "Show on Homepage / Organizatio List"
+            label: "Show on Homepage / Organization List"
           },
           {type: "string", name: "caption", label: "Caption"},
           {type: "image", name: "item_image", label: "Image"},
           {type: "reference", name: "location", label: "Location", collections: ['locations']},
           
           {type: "object", name: "members", label: "Members", list: true, 
-            ui: {
-              itemProps: (item) => {
-               if (item?.caption && item?.id) {
-                    return { label: `${item?.id.split("/").pop().split(".")[0].replaceAll("-", " ")} (${item?.caption})` };
-               }
-                
-              },
-            }, 
+            ui: referenceUI, 
             fields: [
             {type: "string", name: "caption", label: "Caption", required: true},
             {type: "reference", name: "id", label: "Character", collections: ['characters']},
