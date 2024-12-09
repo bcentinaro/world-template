@@ -783,9 +783,9 @@ export default defineConfig({
           {type: "image", name: "item_image", label: "Image"},
           {type: "reference", name: "location", label: "Location", collections: ['locations']},
           
-          {type: "object", name: "members", label: "Members", fields: [
+          {type: "object", name: "members", label: "Members", list: true, fields: [
             {type: "string", name: "caption", label: "Caption", required: true},
-            {type: "reference", name: "id", label: "Members", collections: ['characters']},
+            {type: "reference", name: "id", label: "Character", collections: ['characters']},
           ] 
           },
           {type: "object", name: "details", label: "Details", fields: [
