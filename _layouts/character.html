@@ -29,7 +29,7 @@ layout: default
                     {% include image.html url=page.item_image caption=page.title class="rounded-lg max-w-full p-3" %}               
                 {% endif %}
                 <h2 class="text-xl font-bold">Core Details</h2>
-                <ul>
+                <ul class="p-3">
                     {% if page.species %}
                         {% assign species = site.species | where: "path", page.species | first %}
                         {%- if species -%}
@@ -66,9 +66,9 @@ layout: default
                         {% if page.details.family.status %}
                             <li><span class="font-bold">Relationship Status:</span> {{page.details.family.status}}</li>
                         {% endif %}
-                    </ul>
-                    <h2 class="text-xl font-bold">Family</h2>
-                    <ul>
+                </ul>
+                <h2 class="text-xl font-bold">Family</h2>
+                <ul class="p-3">
                     {% if page.details.family.partner %}
                         {%- assign item = site.documents | where: "path", page.details.family.partner | first -%}
                         {%- if item -%}
