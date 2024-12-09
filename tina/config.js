@@ -782,7 +782,12 @@ export default defineConfig({
           {type: "string", name: "caption", label: "Caption"},
           {type: "image", name: "item_image", label: "Image"},
           {type: "reference", name: "location", label: "Location", collections: ['locations']},
-          {type: "reference", name: "membbers", label: "Members", list: true, collections: ['locations']},
+          
+          {type: "object", name: "members", label: "Members", fields: [
+            {type: "string", name: "caption", label: "Caption", required: true},
+            {type: "reference", name: "id", label: "Members", collections: ['characters']},
+          ] 
+          },
           {type: "object", name: "details", label: "Details", fields: [
             {type: "string", name: "type", label: "Type", required: true, options: ["buisness", "religious", "government", "other"]},
           ] 
