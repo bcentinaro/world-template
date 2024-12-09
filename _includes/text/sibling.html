@@ -1,7 +1,8 @@
-{%- if include.gender == "Male" -%}
+{%- case include.gender -%}
+{%- when "Male" -%}
 Brother
-{%- elsif  include.gender == "Female" -%}
+{%- when "Female" -%}
 Sister
 {%- else -%}
 Sibling
-{%- endif -%}
+{%- endcase -%}

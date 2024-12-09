@@ -1,7 +1,8 @@
-{%- if include.gender == "Male" -%}
+{%- case include.gender -%}
+{%- when "Male" -%}
 Father
-{%- elsif  include.gender == "Female" -%}
+{%- when "Female" -%}
 Mother
 {%- else -%}
 Parent
-{%- endif -%}
+{%- endcase -%}

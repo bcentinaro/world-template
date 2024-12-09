@@ -1,4 +1,5 @@
-{%- if include.status == "Single" or include.status == "Dating" -%}
+{%- case include.status -%}
+{%- when "Divorced" -%}
     {%- if include.gender == "Male" -%}
     Ex-Husband
     {%- elsif  include.gender == "Female" -%}
@@ -6,7 +7,23 @@
     {%- else -%}
     Former Spouse
     {%- endif -%}
-{%- elsif  include.status == "Married" or include.status == "Widowed" -%}
+{%- when "Dating" -%}
+    {%- if include.gender == "Male" -%}
+    Boyfriend
+    {%- elsif  include.gender == "Female" -%}
+    Girlfriend
+    {%- else -%}
+    Partner
+    {%- endif -%}
+{%- when "Married" -%}
+    {%- if include.gender == "Male" -%}
+    Husband
+    {%- elsif  include.gender == "Female" -%}
+    Wife
+    {%- else -%}
+    Spouse
+    {%- endif -%}
+{%- when "Widowed" -%}
     {%- if include.gender == "Male" -%}
     Husband
     {%- elsif  include.gender == "Female" -%}
@@ -15,11 +32,5 @@
     Spouse
     {%- endif -%}
 {%- else -%}
-    {%- if include.gender == "Male" -%}
-    Boyfriend
-    {%- elsif  include.gender == "Female" -%}
-    Girlfriend
-    {%- else -%}
-    Partner
-    {%- endif -%}
-{%- endif -%}
+    
+{%- endcase -%}
