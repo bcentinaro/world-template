@@ -6,7 +6,7 @@ layout: default
         <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
         <div class="content">{{ content }}</div>
         
-        {% assign posts = site.locations | where: "parent", nil %}
+        {% assign posts = site.locations | where: "parent", "" %}
         {% include list.html items=posts %}
 
     </div>
