@@ -20,12 +20,12 @@ const branch =
 
   const referenceUI =  {
     itemProps: (x) => {
-     if (item?.id) {return { label: item?.id.split("/").pop().split(".")[0].replaceAll("-", " ") };}
+     if (x?.id) {return { label: x?.id.split("/").pop().split(".")[0].replaceAll("-", " ") };}
     },
   }
   const captionUI =  {
     itemProps: (x) => {
-     if (item?.id) {return { label: item?.caption };}
+     if (x?.id) {return { label: x?.caption };}
     },
   }
 export default defineConfig({
