@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="{{ site.lang | default: " en-US" }}">
+<html lang="{{ site.lang | default: 'en-US' }}">
+    <head>
+        <title>{{site.title}}</title>
+    </head>
 
-
-<body class="bg-{{ page.theme | default: 'brand' }}-background {{ page.layout }}">
+<body>
     {{ content }}
 </body>
 </html>
