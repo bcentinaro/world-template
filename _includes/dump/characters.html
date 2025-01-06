@@ -24,35 +24,35 @@
             {%- assign character = site.documents | where: "path", page.details.family.partner | first -%}
             {%- if character -%}
                 {% capture caption%}{% include text/partner.html gender=character.details.appearance.gender status=item.details.family.status %}{% endcapture %}
-                <li>{{character.name}}: {{caption}}</li>
+                <li>{{character.title}}: {{caption}}</li>
             {%- endif -%}
         {% endif %}
         {% for parent in item.details.family.parents %}
             {%- assign character = site.documents | where: "path", parent.id | first -%}
             {%- if character -%}
                 {% capture caption%}{% include text/parent.html gender=character.details.appearance.gender %}{% endcapture %}
-                <li>{{character.name}}: {{caption}}</li>
+                <li>{{character.title}}: {{caption}}</li>
             {%- endif -%}
         {% endfor %}
         {% for sibling in item.details.family.siblings %}
             {%- assign character = site.documents | where: "path", sibling.id | first -%}
             {%- if character -%}
             {% capture caption%}{% include text/sibling.html gender=character.details.appearance.gender %}{% endcapture %}
-            <li>{{character.name}}: {{caption}}</li>
+            <li>{{character.title}}: {{caption}}</li>
             {%- endif -%}
         {% endfor %}
         {% for child in item.details.family.children %}
             {%- assign character = site.documents | where: "path", child.id | first -%}
             {%- if character -%}
             {% capture caption%}{% include text/child.html gender=character.details.appearance.gender %}{% endcapture %}
-            <li>{{character.name}}: {{caption}}</li>
+            <li>{{character.title}}: {{caption}}</li>
             {%- endif -%}
         {% endfor %}
 
         {% for person in item.details.people %}
             {%- assign character = site.documents | where: "path", person.id | first -%}
             {%- if character -%}
-            <li>{{character.name}}: {{person.caption}}</li>
+            <li>{{character.title}}: {{person.caption}}</li>
             {%- endif -%}
         {% endfor %}
 

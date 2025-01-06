@@ -7,7 +7,7 @@
         {% for child in item.members %}
             {%- assign child_item = site.documents | where: "path", child.id | first -%}
             {%- if child_item -%}
-            <li>{{child_item.name}}: {{child.caption}}</li>
+            <li>{{child_item.title}}: {{child.caption}}</li>
             {%- endif -%}
         {% endfor %}
     </ul>
