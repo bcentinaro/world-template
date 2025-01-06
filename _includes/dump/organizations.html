@@ -1,0 +1,15 @@
+
+{%- for item in site.organizations -%}
+    <h1>Organizations: {{ item.title }} </h1>
+    {{ item.content }}
+    <h2>Members</h2>
+    <ul>
+        {% for child in item.members %}
+            {%- assign child_item = site.documents | where: "path", child.id | first -%}
+            {%- if child_item -%}
+            <li>{{child_item.name}}: {{child.caption}}</li>
+            {%- endif -%}
+        {% endfor %}
+    </ul>
+    
+{%- endfor -%}
