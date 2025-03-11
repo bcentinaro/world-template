@@ -19,7 +19,15 @@ layout: default
                     </ul>
                 {%- endif -%}
 
-                <div class="content">{{ content }}</div>
+                <div class="content">
+                    {% if page.item_image  %}
+                    <div class="float-right">
+                        {% include image.html url=page.item_image caption=page.title image_class="rounded-lg ml-3 max-h-96" %}                    
+                    </div>
+                    {% endif %}
+                    {{ content }}
+    
+                </div>
             {%- assign chapters = site.chapters | where: "story", page.path | sort: "chapter_number" -%}
             {%- if chapters -%}
             <div id="chapters">
