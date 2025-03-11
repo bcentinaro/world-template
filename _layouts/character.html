@@ -17,14 +17,14 @@ layout: default
     <div class="p-3 rounded-lg bg-white">
         <h1 class="text-2xl font-bold text-center text-brand"> {{ page.title }} </h1>
         <div class="pt-3 min-h-[26rem] grid grid-cols-4">
-            <div class="xl:col-span-3 sm:col-span-4">
+            <div class="col-span-4 md:col-span-3">
                 <div class="content">{{ content }}</div>
                 {% if page.character_sheet %}
                     <h2 class="text-xl font-bold">Sheet</h2>
                     {% include character-sheet.html sheet=page.character_sheet %}
                 {% endif %}
             </div>
-            <div class="p-3 xl:col-span-1 sm:col-span-4">
+            <div class="p-3 col-span-4 md:col-span-1 ">
                 {% if page.item_image  %}
                     {% include image.html url=page.item_image caption=page.title class="rounded-lg max-w-full p-3" %}               
                 {% endif %}
@@ -102,7 +102,7 @@ layout: default
             </div>
         </div>
         <h2 class="text-xl font-bold">Relationships</h2>
-        <div class="py-10 grid 2xl:grid-cols-8 xl:grid-cols-8 lg:grid-cols-8 md:grid-cols-6 sm:grid-cols-4 ">
+        <div class="py-10 grid lg:grid-cols-8 md:grid-cols-6 grid-cols-4 ">
                 {% if page.details.family.partner %}
                     {%- assign item = site.documents | where: "path", page.details.family.partner | first -%}
                     {%- if item -%}
